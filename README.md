@@ -4,6 +4,8 @@ Modelo de sistema de información que soporte la gestión de una empresa que ven
 <<<<<<< HEAD
 
 participacion del primer sprint Cristian Cardenas
+
+Partiipacion Julio martinez
 =======
 #Ruben Alexander Serrano
 Se realliza commit para cumplir con el primer sprint.
