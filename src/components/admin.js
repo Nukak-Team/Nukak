@@ -8,7 +8,6 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 // Sofia, please Add an ID to each product 
-// Pontus, you are the best.
 
 function CreateProduct(props) {
     const [show, setShow] = useState(false);
