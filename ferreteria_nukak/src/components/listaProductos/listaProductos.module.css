@@ -1,1 +1,19 @@
-.ListaProductos {}
+.productosContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 0fr);
+    grid-row: 20px;
+    grid-column: 75px;
+    justify-items: center;
+    justify-content: center;
+
+    productos {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+    
