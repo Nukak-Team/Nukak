@@ -7,12 +7,9 @@ import Table from 'react-bootstrap/Table';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-// Sofia, please Add an ID to each product 
-// Pontus, you are the best.
 
 function CreateProduct(props) {
     const [show, setShow] = useState(false);
-
     const [nombre, setNombre] = useState("");
     const [description, setDescription] = useState("");
     const [precio, setPrecio] = useState(null);
@@ -87,20 +84,23 @@ function ModificarProductos(props){
     ));
     
     return(
-    <div style={{display: 'flex', justifyContent: 'space-around'}}>
-      <ul>
-        {products}
-        {/* <Button variant="outline-info" onClick={()=> props.addProduct()}>Agregar</Button> */}
-        <CreateProduct addProduct={props.addProduct} />
-      </ul>
-      
-      <img alt={activeProduct.img} />
+    
+        <div style={{display: 'flex', justifyContent: 'space-around'}}>
+            <h1>Productos</h1>
+            <br/>
+            <ul>
+                {products}
+                <CreateProduct addProduct={props.addProduct} />
+            </ul>  
+        <img alt={activeProduct.img} />
+        <div className="d-flex justify-content-around">
         <div style={{display: 'flex', flexDirection: 'column'}}>    
             <span>{activeProduct.nombre}</span>
             <span>{activeProduct.description}</span>
             <span>{activeProduct.precio}</span>
             <span>{activeProduct.stock}</span>
             <Button variant="outline-info">editar</Button> <br/>
+        </div>
         </div>
     </div>
     )
@@ -119,7 +119,6 @@ function VentaProductos (props){
                 <tbody>
                     {Object.keys(props.venta).map(k => {
                         const product = props.venta[k];
-                    
                         return (
                             <tr>    
                                 <td colSpan="2">

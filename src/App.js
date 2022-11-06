@@ -4,8 +4,6 @@ import Cliente from './components/cliente';
 import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import {Button} from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const testproducts = [
@@ -34,17 +32,8 @@ function App() {
   function finalizarCarrito(product){
     setVenta(carrito)
     setCarrito({})
-    return (
-      <Modal.Dialog>
-        <Modal.Header closeButton>
-        </Modal.Header>
-        <Modal.Body className="d-flex justify-content-around">
-          <p>Compra exitosa.</p>
-        </Modal.Body>
-      </Modal.Dialog>
-    );
-  
-  }
+    alert("Compra exitosa")
+  } 
 
   function addProduct({description='default descripcion', precio , nombre='new product', img='img', stock} = {}) {
      const newProduct = {
@@ -70,14 +59,17 @@ function App() {
       <>
         <h1>Admin</h1>
         <Admin venta={venta} products={products} addProduct={addProduct}/>
-
       </>
       }
          
       {user === 'client' &&
         <>
         <h1>Client</h1>
-        <Cliente finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} products={products} addToCarrito={addToCarrito} carrito={carrito} />
+        <Cliente finalizarCarrito={finalizarCarrito}
+                  cancelCarrito={cancelCarrito}
+                  products={products}
+                  addToCarrito={addToCarrito}
+                  carrito={carrito}/>
         </>
     }
     </Container>
