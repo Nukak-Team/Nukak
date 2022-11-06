@@ -7,9 +7,9 @@ import {Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const testproducts = [
-  {img:" ", id:1,nombre:'sol de espuma',precio:50.0,stock:15, descripcion: "something", fecha: new Date().toString()},
-  {img:" ", id:2, nombre:'sol de viento',precio:30.0,stock:5, descripcion: "something else", fecha: new Date().toString()},
-  {img:" ", id:3, nombre:'sol de sol',precio:80.0,stock:10, descripcion: "something bob", fecha: new Date().toString()}
+  {img:" ", id:1,nombre:'sol de espuma',precio:50.0,stock:15, description: "something", fecha: new Date().toString()},
+  {img:" ", id:2, nombre:'sol de viento',precio:30.0,stock:5, description: "something else", fecha: new Date().toString()},
+  {img:" ", id:3, nombre:'sol de sol',precio:80.0,stock:10, description: "something bob", fecha: new Date().toString()}
 ];
 
 function App() {
@@ -49,6 +49,13 @@ function App() {
     setProducts(products.concat(newProduct))
   }
 
+  function editProduct({id, description, precio , nombre, img, stock}) {
+    const updatedProducts = products.filter(product => product.id !== id);
+    const updatedProduct = {id, description, precio, nombre, img, stock};
+
+    setProducts(updatedProducts.concat(updatedProduct))
+ }
+
   console.log(carrito);
   
   return (
@@ -58,18 +65,18 @@ function App() {
       {user === 'admin' &&
       <>
         <h1>Admin</h1>
-        <Admin venta={venta} products={products} addProduct={addProduct}/>
+        <Admin venta={venta} products={products} addProduct={addProduct} editProduct={editProduct} />
       </>
       }
          
       {user === 'client' &&
         <>
-        <h1>Client</h1>
-        <Cliente finalizarCarrito={finalizarCarrito}
-                  cancelCarrito={cancelCarrito}
-                  products={products}
-                  addToCarrito={addToCarrito}
-                  carrito={carrito}/>
+          <h1>Client</h1>
+          <Cliente finalizarCarrito={finalizarCarrito}
+                    cancelCarrito={cancelCarrito}
+                    products={products}
+                    addToCarrito={addToCarrito}
+                    carrito={carrito}/>
         </>
     }
     </Container>
