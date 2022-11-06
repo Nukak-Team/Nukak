@@ -7,7 +7,6 @@ import Table from 'react-bootstrap/Table';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-
 function CreateProduct(props) {
     const [show, setShow] = useState(false);
     const [nombre, setNombre] = useState("");
