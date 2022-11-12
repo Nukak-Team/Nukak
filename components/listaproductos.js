@@ -35,7 +35,7 @@ function EditModal(props) {
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Decripcion</Form.Label>
+                        <Form.Label>Descripcion</Form.Label>
                         <Form.Control value={description} onChange={(ev) => setDescription(ev.target.value)} placeholder="Decripcion" as="textarea" aria-label="With textarea" />
                     </Form.Group>
 
@@ -45,7 +45,7 @@ function EditModal(props) {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>stock</Form.Label>
+                        <Form.Label>Stock</Form.Label>
                         <Form.Control value={stock} onChange={(ev) => setStock(ev.target.value)} type="number" placeholder="Unidades disponibles" aria-label="" />
                     </Form.Group>
                 </Form>

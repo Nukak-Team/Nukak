@@ -1,10 +1,10 @@
-import './App.css';
-import Admin from './components/admin';
-import Cliente from './components/cliente';
+import Admin from '../components/admin';
+import Cliente from '../components/cliente';
 import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
-import {Button} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button, Navbar} from 'react-bootstrap';
+import SSRProvider from 'react-bootstrap/SSRProvider';
+
 
 const testproducts = [
   {img:" ", id:1,nombre:'sol de espuma',precio:50.0,stock:15, description: "something", fecha: new Date().toString()},
@@ -12,7 +12,7 @@ const testproducts = [
   {img:" ", id:3, nombre:'sol de sol',precio:80.0,stock:10, description: "something bob", fecha: new Date().toString()}
 ];
 
-function App() {
+function Main({ component, pageProps }) {
   const [user, setUser] = useState('admin');
   const [carrito, setCarrito] = useState({});
   const [venta, setVenta] = useState({});
@@ -59,9 +59,10 @@ function App() {
   console.log(carrito);
   
   return (
+
     <Container>
       <Button onClick={() => setUser(user === 'admin' ? 'client' : 'admin')} variant="outline-info">Toggle user</Button>
-      
+      <Navbar />
       {user === 'admin' &&
       <>
         <h1>Admin</h1>
@@ -83,4 +84,4 @@ function App() {
   ); 
 }
 
-export default App;
+export default Main;
