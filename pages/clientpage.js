@@ -51,6 +51,3 @@ function Clientepage() {
 }
 
 export default Clientepage;
-
-
- //  <Carousel class="index-MastHead-module--cls2--OdHF- index-MastHead-module--cls1--37xum mb-4">

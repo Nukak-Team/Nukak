@@ -1,11 +1,32 @@
+import React from 'react';
 import Link from 'next/link';
+import Badge from 'react-bootstrap/Badge';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Carrito from '../components/cliente';
 
+function App({ Component, pageProps }) {
+    const [carrito, setCarrito] = React.useState({});
 
-function Navbar () {
-        return (
+    function addToCarrito(product){
+        setCarrito({
+        ...carrito,
+        [product.id]: {...product, quantity: carrito[product.id] ? carrito[product.id].quantity + 1 : 1},
+        })
+    }
+
+    function cancelCarrito(){
+        setCarrito({})
+    }
+
+    function finalizarCarrito() {
+        setVenta(carrito)
+        setCarrito({})
+
+        alert("Compra exitosa")
+    }
+
+    return (
+        <>
             <nav class="navbar navbar-default" style={{ height: '150px'}}>
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -16,19 +37,13 @@ function Navbar () {
                         <div>
                             <Link href='/login' type="button" class="btn btn-default navbar-btn">Login</Link>
                             <Link href='/register' type="button" class="btn btn-default navbar-btn">Register</Link> 
-                            <Link href='/carrito' type="button" class="btn btn-default navbar-btn">Carrito</Link> 
+                            <Link href='/carrito' type="button" class="btn btn-default navbar-btn">Carrito <Badge>{Object.keys(carrito).length}</Badge></Link> 
                         </div>
                 </div>
             </nav>
-    )
- }
-
-function App({ Component, pageProps }) {
-    return (
-        <>
-            <Navbar />
-            <Component {...pageProps} />
-          
+            <Component {...pageProps} addToCarrito={addToCarrito} finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} carrito={carrito} />
+           
+            {/* <footer className="container"><p>All rights registered</p></footer> */}
          </>
     )
 }
