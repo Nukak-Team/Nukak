@@ -80,7 +80,7 @@ export function Product(props) {
                     <Card.Text>${product.precio}</Card.Text>
                     <Card.Text>stock: {product.stock}</Card.Text>
                     {isClient === true
-                        ? <Button onClick={() => props.addToCarrito(product)} variant="primary">Comprar</Button>
+                        ? <Button onClick={() => props.addToCarrito(product)} variant="warning" size="lg">Comprar</Button>
                         : <Button variant="outline-info" onClick={handleShow}>
                             Editar
                         </Button>

@@ -3,8 +3,7 @@ import Cliente from '../components/cliente';
 import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import {Button, Navbar} from 'react-bootstrap';
-import SSRProvider from 'react-bootstrap/SSRProvider';
-
+import Clientepage from '../pages/clientpage';
 
 const testproducts = [
   {img:" ", id:1,nombre:'sol de espuma',precio:50.0,stock:15, description: "something", fecha: new Date().toString()},
@@ -21,17 +20,18 @@ function Main({ component, pageProps }) {
   function addToCarrito(product){
     setCarrito({
       ...carrito,
-      [product.id]: {...product, quantity: carrito[product.id] ? carrito[product.id].quantity + 1 : 1}
+      [product.id]: {...product, quantity: carrito[product.id] ? carrito[product.id].quantity + 1 : 1},
     })
   }
 
-  function cancelCarrito(product){
+  function cancelCarrito(){
     setCarrito({})
   }
 
-  function finalizarCarrito(product){
+  function finalizarCarrito() {
     setVenta(carrito)
     setCarrito({})
+    
     alert("Compra exitosa")
   } 
 
@@ -55,11 +55,8 @@ function Main({ component, pageProps }) {
 
     setProducts(updatedProducts.concat(updatedProduct))
  }
-
-  console.log(carrito);
   
   return (
-
     <Container>
       <Button onClick={() => setUser(user === 'admin' ? 'client' : 'admin')} variant="outline-info">Toggle user</Button>
       <Navbar />
@@ -73,6 +70,8 @@ function Main({ component, pageProps }) {
       {user === 'client' &&
         <>
           <h1>Client</h1>
+          <Clientepage/>
+            <br/>
           <Cliente finalizarCarrito={finalizarCarrito}
                     cancelCarrito={cancelCarrito}
                     products={products}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import  {Product} from "./listaproductos";
+import {Product} from "./listaproductos";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Button } from "react-bootstrap";
@@ -74,7 +74,7 @@ function CreateProduct(props) {
       );
 }
 
-function ModificarProductos(props){
+function ModificarProductos(props) {
     const [activeProductId, setActiveProductId] = useState(1);
     const activeProduct = props.products.find(product => product.id === activeProductId);
 
@@ -97,7 +97,7 @@ function ModificarProductos(props){
     )
 }
 
-function VentaProductos (props){
+function VentaProductos (props) {
     return(
       <Table striped bordered hover>
                 <thead>
@@ -132,7 +132,7 @@ function VentaProductos (props){
 function Admin(props){
     return (
         <Tabs>
-            <Tab eventKey="modificar productos" title="modificar productos">
+            <Tab eventKey="modificar productos" title="Modificar productos">
                 <ModificarProductos products={props.products} addProduct={props.addProduct} editProduct={props.editProduct} />
             </Tab>
             <Tab eventKey="ventas" title="Lista ventas">

@@ -1,29 +1,40 @@
 import React, { useState } from 'react';
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Row, Col } from "react-bootstrap";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   return (
     <Container>
-        <Form style={{ width: "50%" }}>
-            <h1>Login to your account</h1>
-            <Form.Group>
-                <Form.Label> Email Address </Form.Label>
-                <Form.Control type="email" placeholder="Enter email" value={email} require onChange= {(e) => setEmail(e.target.value)}/>
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label> Password </Form.Label>
-                <Form.Control type="password" placeholder="Enter Password" value={password} require onChange={(e) => setPassword(e.target.value)}/>
-            </Form.Group>
-            <Form.Group>
-                <Button type="submit">Login</Button>
-            </Form.Group>
-            <p className="pt-3 text-center">Don't you have an account? <a href="/register">Create account</a></p>
-        </Form>
-    </Container>
-    )
+              <Row>
+                <Col md={6} className="login__form--container"> 
+                <Form style={{ height: "100%" }} action="/login" method="post">
+                      <h1>Inicia Sesión</h1>
+                      <Form.Group>
+                          <Form.Label>Email</Form.Label>
+                          <Form.Control type="email" placeholder="Escribe tu email" value={email} require onChange= {(e) => setEmail(e.target.value)}/>
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                      <Form.Label>Contraseña</Form.Label>
+                          <Form.Control type="password" placeholder="Escribe tu contraseña" value={password} require onChange={(e) => setPassword(e.target.value)}/>
+                      </Form.Group>
+                      <Form.Group>
+                      <Button  type="submit">Ingresar</Button>
+                      </Form.Group>
+                      <p className="pt-3 text-center">¿Aún no tienes una cuenta? <a href="/register">¡Create una ya!</a></p>
+                  </Form>
+                  </Col>
+                <Col md={6} className="login__image--container">
+                  <img
+                    style={{ width: "80%" , height: "auto", position: "auto" } }
+                    className="d-block w-100"
+                    src={'imgs/img_login.jpg'}
+                    alt="" />
+                </Col> 
+            </Row>
+    </Container>   
+  );
 }
 
 export default Login;

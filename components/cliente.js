@@ -5,10 +5,10 @@ import Button from 'react-bootstrap/Button';
 import {Tabs, Tab} from 'react-bootstrap';
 
 function Carrito(props){
-const total = Object.keys(props.carrito).map(k => {
-    const product = props.carrito[k];
-    return product.precio * product.quantity;
-}).reduce((prev, next) => prev + next, 0);
+    const total = Object.keys(props.carrito).map(k => {
+        const product = props.carrito[k];
+        return product.precio * product.quantity;
+    }).reduce((prev, next) => prev + next, 0);
 
     return( 
     <>
@@ -62,19 +62,19 @@ const total = Object.keys(props.carrito).map(k => {
     )
 }
  
-
-  
 function Cliente(props){
     return(
-        <Tabs>
-            <Tab eventKey="lista-productos" title="lista-productos">
-                <ListaProductos products={props.products} addToCarrito={props.addToCarrito} isClient={true}/>
-            </Tab>
-            
-            <Tab eventKey="carrito" title="Carrito">
-                <Carrito finalizarCarrito={props.finalizarCarrito} cancelCarrito={props.cancelCarrito} carrito={props.carrito} />
-            </Tab>
-        </Tabs>
+        <>
+            <img className="d-block w-100" src='imgs/img_message2.jpg' alt="" />
+            <Tabs>
+                <Tab eventKey="lista-productos" title="Nuestros Productos"><br/>
+                    <ListaProductos products={props.products} addToCarrito={props.addToCarrito} isClient />
+                </Tab>
+                <Tab eventKey="carrito" title="Carrito">
+                    <Carrito finalizarCarrito={props.finalizarCarrito} cancelCarrito={props.cancelCarrito} carrito={props.carrito} />
+                </Tab>
+            </Tabs>
+        </>
     )
 }
 
