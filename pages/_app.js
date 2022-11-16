@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import Badge from 'react-bootstrap/Badge';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -7,6 +8,7 @@ import './App.css';
 function App({ Component, pageProps }) {
     const [carrito, setCarrito] = React.useState({});
     const [venta, setVenta] = React.useState({});
+    const router = useRouter()
 
     function addToCarrito(product){
         setCarrito({
@@ -23,12 +25,12 @@ function App({ Component, pageProps }) {
         setVenta(carrito)
         setCarrito({})
 
-        alert("Compra exitosa")
+        router.push('/pagoexitoso');
     }
 
     return (
         <>
-            <nav class="navbar navbar-default" style={{ height: '150px'}}>
+            <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
                             <Link class="navbar-brand" href="/" rel="icon" type="image/x-icon">
@@ -38,7 +40,12 @@ function App({ Component, pageProps }) {
                         <div>
                             <Link href='/login' type="button" class="btn btn-default navbar-btn">Login</Link>
                             <Link href='/register' type="button" class="btn btn-default navbar-btn">Register</Link> 
-                            <Link href='/carrito' type="button" class="btn btn-default navbar-btn">Carrito <Badge pill bg="warning" text="dark">{Object.keys(carrito).length}</Badge></Link> 
+                            <Link href='/carrito' type="button" class="btn btn-default navbar-btn">
+                                <img
+                                    style={{ width: "20px" , height: "20px" } }
+                                    className="w-1"
+                                    src={'imgs/img_carrito.jpg'}
+                                    alt="" /><Badge pill bg="warning" text="dark">{Object.keys(carrito).length}</Badge></Link> 
                         </div>
                 </div>
             </nav>
