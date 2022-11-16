@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 
 function Carrito(props) {
@@ -10,6 +10,15 @@ function Carrito(props) {
 
   return (
     <Container>
+        <Row>
+        <Col md={6} className="checkout__image--container">
+                  <img
+                    style={{ width: "50%" , height: "auto", position: "auto" } }
+                    className="d-block w-100"
+                    src={'imgs/img_checkout.jpg'}
+                    alt="" />
+                </Col> 
+        <Col md={6} className="checkout__form--container"> 
         <Table striped bordered hover>
             <thead>
                 <tr>
@@ -56,6 +65,10 @@ function Carrito(props) {
             </Table>
             <Button className='mx-2' onClick={props.finalizarCarrito} variant="primary">Finalizar Compra</Button>
             <Button onClick={props.cancelCarrito} variant="secondary">Cancelar</Button>
+            </Col>
+                
+            </Row>
+
     </Container>   
   );
 }

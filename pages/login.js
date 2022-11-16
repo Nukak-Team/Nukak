@@ -29,7 +29,7 @@ function Login() {
                   <img
                     style={{ width: "80%" , height: "auto", position: "auto" } }
                     className="d-block w-100"
-                    src={'imgs/img_login.jpg'}
+                    src={'imgs/img_login1.jpg'}
                     alt="" />
                 </Col> 
             </Row>

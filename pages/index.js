@@ -1,9 +1,8 @@
 import Admin from '../components/admin';
-import Cliente from '../components/cliente';
 import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import {Button, Navbar} from 'react-bootstrap';
-import Clientepage from '../pages/clientpage';
+import Client from '../pages/client';
 
 const testproducts = [
   {img:" ", id:1,nombre:'sol de espuma',precio:50.0,stock:15, description: "something", fecha: new Date().toString()},
@@ -42,13 +41,9 @@ function Main(props) {
       <Navbar />
       {user === 'admin' && <Admin venta={props.venta} products={products} addProduct={addProduct} editProduct={editProduct} /> }
          
-      {user === 'client' &&
-        <>
-          <Clientepage/>
-            <br/>
-          <Cliente products={products} addToCarrito={props.addToCarrito} carrito={props.carrito}/>
-        </>
-    }
+      {user === 'client' && (
+        <Client products={products} addToCarrito={props.addToCarrito} carrito={props.carrito}/>
+      )}
     </Container>
   ); 
 }

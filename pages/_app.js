@@ -43,8 +43,7 @@ function App({ Component, pageProps }) {
                 </div>
             </nav>
             <Component {...pageProps} venta={venta} addToCarrito={addToCarrito} finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} carrito={carrito} venta={venta}/>
-           
-            {/* <footer className="container"><p>All rights registered</p></footer> */}
+            <footer className="p-5"></footer>
          </>
     )
 }

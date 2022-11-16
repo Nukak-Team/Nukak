@@ -26,7 +26,7 @@ function CreateProduct(props) {
 
     return (
         <>
-          <Button variant="outline-info" onClick={handleShow}>
+          <Button className="my-3" variant="outline-info" onClick={handleShow}>
             Agregar
           </Button>
             <Modal show={show} onHide={handleClose}>
@@ -79,19 +79,19 @@ function ModificarProductos(props) {
     const activeProduct = props.products.find(product => product.id === activeProductId);
 
     const products = props.products.map(product => (
-        <ListGroup.Item 
+        <ListGroup.Item  action
         onClick={() => setActiveProductId(product.id)} variant={product.id === activeProduct.id ? "info" : ""}>{product.nombre}</ListGroup.Item>
     ));
     
     return(
-        <div style={{display: 'flex', justifyContent: 'space-around'}}>
+        <div style={{display: 'flex', justifyContent: 'space-around', 'padding': '2rem 0'}}>
             <div>
-                <h3>Productos</h3>
+                <h3>Lista de Productos</h3>
                     <ListGroup>
                         {products}
                         <CreateProduct addProduct={props.addProduct} /> 
                     </ListGroup>
-                </div>
+            </div>
             <Product data={activeProduct} editProduct={props.editProduct} />
         </div>
     )

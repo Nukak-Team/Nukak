@@ -71,7 +71,7 @@ export function Product(props) {
 
     return (
         <>
-            <Card style={{ width: '18rem' }}>
+            <Card border="warning" style={{ width: '18rem' }}>
                 <Card.Img variant="top" alt="" src="holder.js/100px180" />
                 <Card.Body src="">
                     <Card.Title>{product.nombre}</Card.Title>
