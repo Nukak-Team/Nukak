@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import ListaProductos from "./listaproductos";
+import {Product} from "./listaproductos";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Button } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 function CreateProduct(props) {
     const [show, setShow] = useState(false);
@@ -25,7 +26,7 @@ function CreateProduct(props) {
 
     return (
         <>
-          <Button variant="outline-info" onClick={handleShow}>
+          <Button className="my-3" variant="outline-info" onClick={handleShow}>
             Agregar
           </Button>
             <Modal show={show} onHide={handleClose}>
@@ -65,7 +66,7 @@ function CreateProduct(props) {
                         Close
                     </Button>
                     <Button variant="primary" onClick={save}>
-                        Save Changes
+                        Save
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -73,39 +74,30 @@ function CreateProduct(props) {
       );
 }
 
-function ModificarProductos(props){
+function ModificarProductos(props) {
     const [activeProductId, setActiveProductId] = useState(1);
     const activeProduct = props.products.find(product => product.id === activeProductId);
 
     const products = props.products.map(product => (
-        <li style={{ fontWeight: product.id === activeProduct.id ? '600' : '400'}}
-        onClick={() => setActiveProductId(product.id)}>{product.nombre}</li>
+        <ListGroup.Item  action
+        onClick={() => setActiveProductId(product.id)} variant={product.id === activeProduct.id ? "info" : ""}>{product.nombre}</ListGroup.Item>
     ));
     
     return(
-    
-        <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <h1>Productos</h1>
-            <br/>
-            <ul>
-                {products}
-                <CreateProduct addProduct={props.addProduct} />
-            </ul>  
-        <img alt={activeProduct.img} />
-        <div className="d-flex justify-content-around">
-        <div style={{display: 'flex', flexDirection: 'column'}}>    
-            <span>{activeProduct.nombre}</span>
-            <span>{activeProduct.description}</span>
-            <span>{activeProduct.precio}</span>
-            <span>{activeProduct.stock}</span>
-            <Button variant="outline-info">editar</Button> <br/>
+        <div style={{display: 'flex', justifyContent: 'space-around', 'padding': '2rem 0'}}>
+            <div>
+                <h3>Lista de Productos</h3>
+                    <ListGroup>
+                        {products}
+                        <CreateProduct addProduct={props.addProduct} /> 
+                    </ListGroup>
+            </div>
+            <Product data={activeProduct} editProduct={props.editProduct} />
         </div>
-        </div>
-    </div>
     )
 }
 
-function VentaProductos (props){
+function VentaProductos (props) {
     return(
       <Table striped bordered hover>
                 <thead>
@@ -136,15 +128,12 @@ function VentaProductos (props){
         </Table>
     )
 }
+
 function Admin(props){
     return (
         <Tabs>
-            <Tab eventKey="lista-productos" title="lista-productos">
-                <ListaProductos products={props.products} />
-            </Tab>
-            <Tab eventKey="modificar productos" title="modificar productos">
-                <ModificarProductos products={props.products} addProduct={props.addProduct}/>
-            
+            <Tab eventKey="modificar productos" title="Modificar productos">
+                <ModificarProductos products={props.products} addProduct={props.addProduct} editProduct={props.editProduct} />
             </Tab>
             <Tab eventKey="ventas" title="Lista ventas">
                 <VentaProductos venta={props.venta} />
