@@ -6,6 +6,7 @@ import './App.css';
 
 function App({ Component, pageProps }) {
     const [carrito, setCarrito] = React.useState({});
+    const [venta, setVenta] = React.useState({});
 
     function addToCarrito(product){
         setCarrito({
@@ -37,11 +38,11 @@ function App({ Component, pageProps }) {
                         <div>
                             <Link href='/login' type="button" class="btn btn-default navbar-btn">Login</Link>
                             <Link href='/register' type="button" class="btn btn-default navbar-btn">Register</Link> 
-                            <Link href='/carrito' type="button" class="btn btn-default navbar-btn">Carrito <Badge>{Object.keys(carrito).length}</Badge></Link> 
+                            <Link href='/carrito' type="button" class="btn btn-default navbar-btn">Carrito <Badge pill bg="warning" text="dark">{Object.keys(carrito).length}</Badge></Link> 
                         </div>
                 </div>
             </nav>
-            <Component {...pageProps} addToCarrito={addToCarrito} finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} carrito={carrito} />
+            <Component {...pageProps} venta={venta} addToCarrito={addToCarrito} finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} carrito={carrito} venta={venta}/>
            
             {/* <footer className="container"><p>All rights registered</p></footer> */}
          </>

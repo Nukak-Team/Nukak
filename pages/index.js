@@ -13,9 +13,7 @@ const testproducts = [
 
 function Main(props) {
   const [user, setUser] = useState('admin');
-  const [venta, setVenta] = useState({});
   const [products, setProducts] = useState(testproducts);
-
 
   function addProduct({description='default descripcion', precio , nombre='new product', img='img', stock} = {}) {
      const newProduct = {
@@ -42,7 +40,7 @@ function Main(props) {
     <Container>
       <Button onClick={() => setUser(user === 'admin' ? 'client' : 'admin')} variant="outline-info">Toggle user</Button>
       <Navbar />
-      {user === 'admin' && <Admin venta={venta} products={products} addProduct={addProduct} editProduct={editProduct} /> }
+      {user === 'admin' && <Admin venta={props.venta} products={products} addProduct={addProduct} editProduct={editProduct} /> }
          
       {user === 'client' &&
         <>
