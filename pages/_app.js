@@ -24,8 +24,6 @@ function App({ Component, pageProps }) {
     function finalizarCarrito() {
         setVenta(carrito)
         setCarrito({})
-
-        router.push('/pagoexitoso');
     }
 
     return (
@@ -49,7 +47,7 @@ function App({ Component, pageProps }) {
                         </div>
                 </div>
             </nav>
-            <Component {...pageProps} venta={venta} addToCarrito={addToCarrito} finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} carrito={carrito} venta={venta}/>
+            <Component {...pageProps} venta={venta} addToCarrito={addToCarrito} finalizarCarrito={finalizarCarrito} cancelCarrito={cancelCarrito} carrito={carrito}/>
             <footer className="p-5"></footer>
          </>
     )

@@ -63,13 +63,14 @@ function EditModal(props) {
 }
 
 export function Product(props) {
+    console.log("Product/props", props);
     const product = props.data
     const isClient = props.isClient
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    return (
+    return product && (
         <>
             <Card border="warning" style={{ width: '18rem' }}>
                 <Card.Img variant="top" alt="" src="holder.js/100px180" />

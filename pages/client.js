@@ -50,7 +50,7 @@ function Client(props) {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      <img className="d-block w-100" src='imgs/img_message2.jpg' alt="" />
+      <img className="d-block w-100" style = {{ width: "45%", maxHeight: "5%", padding:"5px", margin: "3px" }} src='imgs/Banner.gif' alt="" />
       <ListaProductos products={props.products} addToCarrito={props.addToCarrito} isClient />
     </Container>
   );
